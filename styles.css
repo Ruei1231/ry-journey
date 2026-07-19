@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Zen+Old+Mincho:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ---------- Tokens ---------- */
+:root{
+  --paper: #F6F3EB;
+  --paper-deep: #EFEADC;
+  --ink: #211F1B;
+  --ink-soft: #6B6558;
+  --line: #D9D3C5;
+  --accent-dusk: #4C5B6B;   /* twilight sky, used for links / hover states */
+  --accent-stamp: #A13D2E;  /* postmark ink, used sparingly */
+  --shadow: rgba(33,31,27,0.10);
+
+  --serif: "Zen Old Mincho", serif;
+  --script: "Cormorant Garamond", serif;
+  --sans: "Inter", sans-serif;
+
+  --gap: clamp(24px, 4vw, 64px);
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: inherit; text-decoration: none; }
+
+::selection{ background: var(--accent-dusk); color: var(--paper); }
+
+/* ---------- Site chrome (shared on inner pages) ---------- */
+.site-mark{
+  position: fixed;
+  top: clamp(20px, 3vw, 36px);
+  left: clamp(20px, 3vw, 36px);
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  z-index: 40;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.site-mark span{ display:block; }
+
+.top-nav{
+  position: fixed;
+  top: clamp(20px, 3vw, 36px);
+  right: clamp(20px, 3vw, 36px);
+  z-index: 40;
+  display: flex;
+  gap: clamp(16px, 2vw, 32px);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.top-nav a{
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color .25s ease, border-color .25s ease;
+}
+.top-nav a:hover,
+.top-nav a[aria-current="page"]{
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.wordmark{
+  position: fixed;
+  bottom: clamp(20px, 3vw, 36px);
+  right: clamp(20px, 3vw, 36px);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  z-index: 40;
+  color: var(--ink-soft);
+}
+
+.footnote{
+  position: fixed;
+  bottom: clamp(20px, 3vw, 36px);
+  left: clamp(20px, 3vw, 36px);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  z-index: 40;
+}
+
+/* ---------- Postmark signature element ---------- */
+.postmark{
+  --size: 108px;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  border: 1px solid var(--accent-stamp);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-stamp);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+.postmark::before{
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--accent-stamp);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.postmark-text{
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.postmark-date{
+  font-family: var(--script);
+  font-style: italic;
+  font-size: 0.95rem;
+  display: block;
+}
+
+@keyframes stamp-in{
+  0%{ transform: scale(1.6) rotate(-14deg); opacity: 0; }
+  60%{ transform: scale(0.94) rotate(-4deg); opacity: 1; }
+  100%{ transform: scale(1) rotate(-6deg); opacity: 0.85; }
+}
+.postmark{ animation: stamp-in 0.9s cubic-bezier(.2,.7,.3,1) both; animation-delay: .3s; }
+
+@media (prefers-reduced-motion: reduce){
+  .postmark{ animation: none; }
+  *{ scroll-behavior: auto !important; }
+}
+
+/* ---------- Utility ---------- */
+.eyebrow{
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.rule{
+  width: 1px;
+  height: 100%;
+  background: var(--line);
+}
+
+.container{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
+
+/* ---------- Inner-page hero ---------- */
+.page-hero{
+  min-height: 42vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 160px var(--gap) 56px;
+}
+.page-hero .eyebrow{ margin-bottom: 18px; }
+.page-hero h1{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  margin: 0;
+  line-height: 1.1;
+}
+.page-hero .romaji{
+  font-family: var(--script);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  margin-top: 10px;
+  display: block;
+}
+
+hr.divider{
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0 var(--gap);
+}
+
+/* ---------- Single journal entry ---------- */
+.entry-hero{
+  height: 62vh;
+  min-height: 380px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+.entry-hero::after{
+  content:"";
+  position: absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(33,31,27,0.05) 40%, rgba(33,31,27,0.6) 100%);
+}
+.entry-hero-content{
+  position: relative;
+  z-index: 2;
+  padding: 48px var(--gap) 44px;
+  color: var(--paper);
+}
+.entry-hero-content .eyebrow{ color: rgba(246,243,235,0.75); }
+.entry-hero-content h1{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  margin: 10px 0 8px;
+}
+.entry-hero-content .romaji{
+  font-family: var(--script);
+  font-style: italic;
+  color: rgba(246,243,235,0.85);
+}
+
+.entry-article{
+  max-width: 68ch;
+  margin: 64px auto 0;
+  padding: 0 var(--gap) 140px;
+}
+.entry-article p{
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin: 0 0 26px;
+}
+.entry-article p:first-of-type::first-letter{
+  font-family: var(--serif);
+  font-size: 3.2rem;
+  float: left;
+  line-height: 0.8;
+  padding: 6px 8px 0 0;
+  color: var(--accent-dusk);
+}
+.entry-article figure{
+  margin: 44px 0;
+}
+.entry-article .figure-block{
+  aspect-ratio: 16/10;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+}
+.entry-article figcaption{
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+.entry-back{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: var(--script);
+  font-style: italic;
+  font-size: 1.05rem;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color .25s ease, border-color .25s ease;
+}
+.entry-back:hover{ color: var(--accent-dusk); border-color: var(--accent-dusk); }

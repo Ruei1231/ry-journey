@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Journal — Your Name</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .journal-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 56px;
+  }
+
+  .entry-card{
+    background: var(--paper);
+    display: block;
+    padding-bottom: 28px;
+    transition: background .3s ease;
+  }
+  .entry-card:hover{ background: var(--paper-deep); }
+
+  .entry-thumb{
+    aspect-ratio: 4 / 5;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .entry-thumb::after{
+    content:"";
+    position: absolute;
+    inset:0;
+    background: linear-gradient(180deg, transparent 60%, rgba(33,31,27,0.35) 100%);
+  }
+  .entry-meta-stamp{
+    position: absolute;
+    left: 20px; bottom: 16px;
+    z-index: 2;
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .thumb--kyoto{ background-image: linear-gradient(200deg, #e7c98a 0%, #c98a5c 40%, #6b5866 75%, #2c3947 100%); }
+  .thumb--portugal{ background-image: linear-gradient(200deg, #cfe3e6 0%, #7fa8b0 45%, #3f5c66 100%); }
+  .thumb--hokkaido{ background-image: linear-gradient(200deg, #eef1f4 0%, #c3ccd6 40%, #5b6b7d 100%); }
+  .thumb--jordan{ background-image: linear-gradient(200deg, #f0d9b0 0%, #d69a63 45%, #7a4c3a 100%); }
+
+  .entry-text{ padding: 20px var(--gap) 0; }
+  .entry-text h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin: 0 0 6px;
+  }
+  .entry-text .place{
+    font-family: var(--script);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .entry-text p{
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (max-width: 980px){
+    .journal-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px){
+    .journal-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="site-mark" aria-hidden="true"><span>Wander</span></div>
+
+  <nav class="top-nav">
+    <a href="about.html">About</a>
+    <a href="journal.html" aria-current="page">Journal</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <header class="page-hero">
+    <span class="eyebrow">Where I've Been</span>
+    <h1>Photo Journal<span class="romaji">Notes from the road</span></h1>
+  </header>
+
+  <hr class="divider">
+
+  <main>
+    <div class="journal-grid">
+
+      <a class="entry-card" href="entry-kyoto.html">
+        <div class="entry-thumb thumb--kyoto">
+          <span class="entry-meta-stamp">Kyoto, Japan — Nov 2025</span>
+        </div>
+        <div class="entry-text">
+          <h2>Kyoto in November</h2>
+          <span class="place">Momiji season, before the crowds</span>
+          <p>Four days chasing maple light through back-alley temples, and the quiet arriving right after the tour buses leave.</p>
+        </div>
+      </a>
+
+      <a class="entry-card" href="entry-portugal.html">
+        <div class="entry-thumb thumb--portugal">
+          <span class="entry-meta-stamp">Algarve, Portugal — Jun 2025</span>
+        </div>
+        <div class="entry-text">
+          <h2>Coastal Roads</h2>
+          <span class="place">Driving the edge of the Algarve</span>
+          <p>Cliffs the colour of rust, a car with no air conditioning, and the best sardines I've had in my life.</p>
+        </div>
+      </a>
+
+      <a class="entry-card" href="entry-hokkaido.html">
+        <div class="entry-thumb thumb--hokkaido">
+          <span class="entry-meta-stamp">Hokkaido, Japan — Feb 2025</span>
+        </div>
+        <div class="entry-text">
+          <h2>Winter Light</h2>
+          <span class="place">Biei and the frozen fields</span>
+          <p>Minus fifteen degrees and completely worth it, for snow that looks blue at six in the morning.</p>
+        </div>
+      </a>
+
+      <a class="entry-card" href="entry-jordan.html">
+        <div class="entry-thumb thumb--jordan">
+          <span class="entry-meta-stamp">Wadi Rum, Jordan — Oct 2024</span>
+        </div>
+        <div class="entry-text">
+          <h2>Desert Silence</h2>
+          <span class="place">A night in Wadi Rum</span>
+          <p>No signal, no light pollution, and the loudest silence I've ever tried to describe in words.</p>
+        </div>
+      </a>
+
+      <!--
+        To add a new entry:
+        1. Duplicate one of the entry-*.html files and rename it.
+        2. Update its hero image, title, meta, and body text.
+        3. Copy one <a class="entry-card">...</a> block above, point its href
+           at the new file, and swap in a thumbnail colour + copy.
+      -->
+
+    </div>
+  </main>
+
+  <div class="wordmark">Your&nbsp;Name</div>
+  <div class="footnote">&copy; 2026 Your Name</div>
+
+</body>
+</html>

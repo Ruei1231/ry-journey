@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me — Your Name</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .site-mark span:first-child{ color: var(--ink); }
+
+  .about-body{ padding: 0 0 140px; }
+
+  .about-grid{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    padding: 0 var(--gap) 0;
+  }
+
+  .about-portrait{
+    aspect-ratio: 3 / 4;
+    border-radius: 2px;
+    background-image: radial-gradient(120% 100% at 30% 15%, #cbb7a4 0%, #8f7461 50%, #4b3c33 100%);
+    position: sticky;
+    top: 140px;
+    align-self: start;
+  }
+
+  .about-copy p{
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 62ch;
+    color: var(--ink);
+    margin: 0 0 26px;
+  }
+  .about-copy p:first-child{
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+    color: var(--ink);
+  }
+
+  .facts{
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 28px 40px;
+    max-width: 62ch;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .facts dt{
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .facts dd{
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+  }
+
+  .about-cta{
+    margin-top: 56px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--script);
+    font-style: italic;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    transition: color .25s ease, border-color .25s ease;
+  }
+  .about-cta:hover{ color: var(--accent-dusk); border-color: var(--accent-dusk); }
+
+  @media (max-width: 760px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-portrait{ position: static; max-width: 260px; }
+    .facts{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="site-mark" aria-hidden="true"><span>Portrait</span></div>
+
+  <nav class="top-nav">
+    <a href="about.html" aria-current="page">About</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <header class="page-hero">
+    <span class="eyebrow">Who I Am</span>
+    <h1>About Me<span class="romaji">The unfiltered version</span></h1>
+  </header>
+
+  <hr class="divider">
+
+  <section class="about-body">
+    <div class="about-grid" style="margin-top:64px;">
+      <div class="about-portrait" role="img" aria-label="Portrait placeholder — replace with your own photo"></div>
+
+      <div class="about-copy">
+        <p>Hi, I'm Your Name — a [your profession/role] who is happiest with a camera in one hand and a boarding pass in the other.</p>
+        <p>This page is the short version of a much longer story. Replace this paragraph with how you'd introduce yourself at a dinner party: where you're from, what you spend your days doing, and what pulled you toward travel and photography in the first place.</p>
+        <p>I started this journal as a way to slow down and actually look at the places I pass through, instead of just collecting them. Most of what you'll find here are the quiet, in-between moments — a train platform at dusk, the smell of a market before it opens, the last light on a mountain I didn't plan to climb.</p>
+        <p>When I'm not travelling, you can usually find me [a small everyday detail — reading, cooking, running by the river]. Feel free to say hello.</p>
+
+        <dl class="facts">
+          <div>
+            <dt>Based in</dt>
+            <dd>Your City, Country</dd>
+          </div>
+          <div>
+            <dt>Currently</dt>
+            <dd>Planning the next trip</dd>
+          </div>
+          <div>
+            <dt>Camera</dt>
+            <dd>Your camera / film stock</dd>
+          </div>
+          <div>
+            <dt>Favourite so far</dt>
+            <dd>A place you loved</dd>
+          </div>
+        </dl>
+
+        <a class="about-cta" href="contact.html">Send me a letter →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wordmark">Your&nbsp;Name</div>
+  <div class="footnote">&copy; 2026 Your Name</div>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Me — Your Name</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-wrap{
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 var(--gap) 140px;
+  }
+  .contact-intro{
+    margin: 56px 0 48px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+
+  form{ display: flex; flex-direction: column; gap: 30px; }
+
+  .field{ display: flex; flex-direction: column; gap: 8px; }
+  .field label{
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .field input,
+  .field select,
+  .field textarea{
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 8px 2px;
+    outline: none;
+    transition: border-color .25s ease;
+  }
+  .field textarea{ resize: vertical; min-height: 120px; }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus{ border-color: var(--ink); }
+
+  .field select{ appearance: none; cursor: pointer; }
+
+  .submit-row{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 12px;
+  }
+  button.submit{
+    font-family: var(--script);
+    font-style: italic;
+    font-size: 1.15rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--ink);
+    padding: 4px 0;
+    cursor: pointer;
+    color: var(--ink);
+    transition: color .25s ease, border-color .25s ease;
+  }
+  button.submit:hover{ color: var(--accent-dusk); border-color: var(--accent-dusk); }
+
+  .contact-alt{
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .contact-alt div{ font-size: 0.9rem; }
+  .contact-alt dt{
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+
+  .form-note{
+    margin-top: 18px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+  <div class="site-mark" aria-hidden="true"><span>Hello</span></div>
+
+  <nav class="top-nav">
+    <a href="about.html">About</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+  </nav>
+
+  <header class="page-hero">
+    <span class="eyebrow">Get In Touch</span>
+    <h1>Contact Me<span class="romaji">Say hello, or send a letter</span></h1>
+  </header>
+
+  <hr class="divider">
+
+  <section class="contact-wrap">
+    <p class="contact-intro">Whether it's a collaboration, a question about a place I've written about, or just to say hello — I read every message myself.</p>
+
+    <!--
+      This form is written for Netlify Forms (free tier). If you deploy
+      elsewhere (GitHub Pages, Vercel, etc.), swap the <form> action for a
+      service like Formspree (also free) — see the README for details.
+    -->
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p hidden>
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="field">
+        <label for="reason">This is about</label>
+        <select id="reason" name="reason">
+          <option value="hello">Just saying hello</option>
+          <option value="collab">A collaboration</option>
+          <option value="press">Press / media</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="submit">Send message →</button>
+      </div>
+
+      <p class="form-note">Fields marked required must be filled in before sending.</p>
+    </form>
+
+    <div class="contact-alt">
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></dd>
+      </div>
+      <div>
+        <dt>Instagram</dt>
+        <dd><a href="https://instagram.com/yourhandle" target="_blank" rel="noopener">@yourhandle</a></dd>
+      </div>
+    </div>
+  </section>
+
+  <div class="wordmark">Your&nbsp;Name</div>
+  <div class="footnote">&copy; 2026 Your Name</div>
+
+</body>
+</html>
