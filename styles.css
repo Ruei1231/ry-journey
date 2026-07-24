@@ -73,6 +73,12 @@ a{ color: inherit; text-decoration: none; }
   color: var(--ink);
   border-color: var(--ink);
 }
+.top-nav .nav-divider{
+  width: 1px;
+  height: 12px;
+  background: var(--line);
+  align-self: center;
+}
 
 .wordmark{
   position: fixed;
